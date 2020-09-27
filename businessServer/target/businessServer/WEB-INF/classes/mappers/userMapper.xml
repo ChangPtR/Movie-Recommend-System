@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neu.mapper.UserMapper">
+
+    <select id="logIn" resultType="com.neu.model.User">
+        select * from user where uid=#{uid}
+    </select>
+
+    <update id="update" parameterType="com.neu.model.User">
+        update user set
+           gender = #{gender},
+           age = #{age},
+           occupation = #{occupation},
+           zipCode = #{zipCode}
+        where uid = #{uid}
+    </update>
+
+
+</mapper>
