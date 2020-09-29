@@ -10,7 +10,7 @@ POST http://localhost:8080/businessServer/UserController/logIn
 Content-Type: application/json
 
 {
-  "uid": 25555
+  "uid": 9
 }
 
 ###

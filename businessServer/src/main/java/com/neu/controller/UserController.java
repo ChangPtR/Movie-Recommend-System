@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/UserController")
 public class UserController {
@@ -18,11 +20,11 @@ public class UserController {
     @RequestMapping("/logIn")
     public ResponseDto logIn(@RequestBody User user){
         ResponseDto responseDto = new ResponseDto();
-        user=userService.logIn(user.getUid());
-        if(user==null){
+        Map<String,Object> ump=userService.logIn(user.getUid());
+        if(ump==null){
             responseDto.setSuccess(false);
         }else{
-           responseDto.setContent(user);
+           responseDto.setContent(ump);
         }
         return responseDto;
     }

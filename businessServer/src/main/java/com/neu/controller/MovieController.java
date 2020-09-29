@@ -2,6 +2,7 @@ package com.neu.controller;
 
 import com.neu.dto.PageDto;
 import com.neu.dto.ResponseDto;
+import com.neu.model.Movie;
 import com.neu.model.Rating;
 import com.neu.model.Tag;
 import com.neu.service.MovieService;
@@ -52,6 +53,16 @@ public class MovieController {
             details.put("tagList",tags);
         }
         responseDto.setContent(details);
+        return responseDto;
+    }
+    @PostMapping("/search")
+    public ResponseDto search(@RequestBody Map<String, Object> mp){
+        ResponseDto responseDto = new ResponseDto();
+        List<Movie> movieList=movieService.search(mp);
+        if(movieList.size()==0){
+            responseDto.setSuccess(false);
+        }
+        responseDto.setContent(movieList);
         return responseDto;
     }
 }

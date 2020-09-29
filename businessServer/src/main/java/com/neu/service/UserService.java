@@ -5,12 +5,14 @@ import com.neu.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-    public User logIn(int uid){
+    public Map<String,Object> logIn(int uid){
         return userMapper.logIn(uid);
     }
 

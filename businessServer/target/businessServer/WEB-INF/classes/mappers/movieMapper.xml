@@ -6,4 +6,8 @@
         select * from movie order by mid limit #{start},#{length}
     </select>
 
+    <select id="search" parameterType="map" resultType="com.neu.model.Movie">
+        select * from movie where name like #{key} order by mid limit #{start},#{length}
+    </select>
+
 </mapper>

@@ -8,11 +8,13 @@
         <typeAlias alias="Movie" type="com.neu.model.Movie"/>
         <typeAlias alias="Rating" type="com.neu.model.Rating"/>
         <typeAlias alias="Tag" type="com.neu.model.Tag"/>
+        <typeAlias alias="Occupation" type="com.neu.model.Occupation"/>
     </typeAliases>
     <mappers>
         <mapper resource="mappers/userMapper.xml"/>
         <mapper resource="mappers/movieMapper.xml"/>
         <mapper resource="mappers/tagMapper.xml"/>
         <mapper resource="mappers/ratingMapper.xml"/>
+        <mapper resource="mappers/occupationMapper.xml"/>
     </mappers>
 </configuration>

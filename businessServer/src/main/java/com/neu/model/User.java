@@ -1,8 +1,5 @@
 package com.neu.model;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class User {
     private int uid;
     private int age;

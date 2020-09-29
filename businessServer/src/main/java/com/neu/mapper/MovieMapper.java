@@ -9,4 +9,5 @@ import java.util.Map;
 @Repository
 public interface MovieMapper {
     public List<Movie> listAll(Map<String, Integer> mp);
+    public List<Movie> search(Map<String, Object> mp);
 }

@@ -23,4 +23,14 @@ public class MovieService {
         pageDto.setTotal(mvList.size());
         pageDto.setList(mvList);
     }
+
+    public List<Movie> search(Map<String, Object> mp){
+        mp.put("key","%"+mp.get("key").toString()+"%");
+        int size=Integer.parseInt(mp.get("size").toString());
+        int page=Integer.parseInt(mp.get("page").toString());
+        mp.put("start", size*page);
+        mp.put("length",size);
+        return movieMapper.search(mp);
+    }
+
 }

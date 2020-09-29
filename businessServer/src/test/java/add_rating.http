@@ -9,10 +9,10 @@ POST http://localhost:8080/businessServer/RatingController/addRating
 Content-Type: application/json
 
 {
-  "uid": 1,
+  "uid": 16,
   "mid": 1,
   "score": 5,
-  "timestamp":1099944267
+  "timestamp":1033344269
 }
 
 ###
