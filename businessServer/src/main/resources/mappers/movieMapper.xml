@@ -10,4 +10,33 @@
         select * from movie where name like #{key} order by mid limit #{start},#{length}
     </select>
 
+    <select id="getOne" resultType="com.neu.model.Movie">
+        select * from movie where mid=#{mid}
+    </select>
+    
+    <select id="getCount" resultType="java.lang.Integer">
+        select `count` from rateMoreMovies where mid=#{mid}
+    </select>
+    
+    <select id="currCount"  parameterType="map" resultType="map">
+         select * from rateMoreRecentlyMovies
+         where yearmonth=(select max(yearmonth) from rateMoreRecentlyMovies)
+         order by mid limit #{start},#{length}
+    </select>
+
+    <select id="getAvg" resultType="java.lang.Double">
+        select `avg` from averageMovies where mid=#{mid}
+    </select>
+
+    <select id="top10" parameterType="java.lang.String" resultType="map">
+        select a.* from genresTopMovies a
+        where a.genre=#{genre} and
+        10 > (select count(*) from genresTopMovies where  genre = #{genre} and score > a.score )
+        order by a.score desc;
+    </select>
+
+    <select id="userRecommend" resultType="map">
+        select * from UserRecs where uid=#{uid}
+    </select>
+
 </mapper>

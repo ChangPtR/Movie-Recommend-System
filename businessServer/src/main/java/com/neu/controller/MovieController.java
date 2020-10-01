@@ -5,6 +5,7 @@ import com.neu.dto.ResponseDto;
 import com.neu.model.Movie;
 import com.neu.model.Rating;
 import com.neu.model.Tag;
+import com.neu.model.User;
 import com.neu.service.MovieService;
 import com.neu.service.RatingService;
 import com.neu.service.TagService;
@@ -63,6 +64,59 @@ public class MovieController {
             responseDto.setSuccess(false);
         }
         responseDto.setContent(movieList);
+        return responseDto;
+    }
+
+    @PostMapping("/getOne")
+    public ResponseDto getOne(@RequestBody Movie movie){
+        ResponseDto responseDto=new ResponseDto();
+        movie=movieService.getOne(movie);
+        responseDto.setContent(movie);
+        return responseDto;
+    }
+
+    @PostMapping("/getCount")
+    public ResponseDto getCount(@RequestBody Movie movie){
+        ResponseDto responseDto=new ResponseDto();
+        int c=movieService.getCount(movie);
+        responseDto.setContent(c);
+        return responseDto;
+    }
+    @PostMapping("/currCount")
+    public ResponseDto currCount(@RequestBody PageDto pageDto){
+        ResponseDto responseDto=new ResponseDto();
+        List<Map<String,Object>> mvList=movieService.currCount(pageDto);
+        if(mvList.size()==0){
+            responseDto.setSuccess(false);
+        }
+        responseDto.setContent(mvList);
+        return responseDto;
+    }
+    @PostMapping("/getAvg")
+    public ResponseDto getAvg(@RequestBody Movie movie){
+        ResponseDto responseDto=new ResponseDto();
+        double avg=movieService.getAvg(movie);
+        responseDto.setContent(avg);
+        return responseDto;
+    }
+    @PostMapping("/top10")
+    public ResponseDto top10(@RequestBody Map<String, Object> mp){
+        ResponseDto responseDto=new ResponseDto();
+        List<Map<String,Object>> mvList=movieService.top10(mp.get("genre").toString());
+        if(mvList.size()==0){
+            responseDto.setSuccess(false);
+        }
+        responseDto.setContent(mvList);
+        return responseDto;
+    }
+    @PostMapping("/userRecommend")
+    public ResponseDto userRecommend(@RequestBody User user){
+        ResponseDto responseDto=new ResponseDto();
+        List<Map<String,Object>> mvList=movieService.userRecommend(user);
+        if(mvList.size()==0){
+            responseDto.setSuccess(false);
+        }
+        responseDto.setContent(mvList);
         return responseDto;
     }
 }
