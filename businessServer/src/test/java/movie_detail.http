@@ -6,7 +6,7 @@
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
 
-POST http://localhost:8080/businessServer/MovieController/getDetail
+POST http://localhost:8088/rs/MovieController/getDetail
 Content-Type: application/json
 
 {

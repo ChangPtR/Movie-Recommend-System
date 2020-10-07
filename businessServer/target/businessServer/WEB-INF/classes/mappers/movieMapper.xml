@@ -13,11 +13,11 @@
     <select id="getOne" resultType="com.neu.model.Movie">
         select * from movie where mid=#{mid}
     </select>
-    
+
     <select id="getCount" resultType="java.lang.Integer">
         select `count` from rateMoreMovies where mid=#{mid}
     </select>
-    
+
     <select id="currCount"  parameterType="map" resultType="map">
          select * from rateMoreRecentlyMovies
          where yearmonth=(select max(yearmonth) from rateMoreRecentlyMovies)
@@ -29,14 +29,37 @@
     </select>
 
     <select id="top10" parameterType="java.lang.String" resultType="map">
-        select a.* from genresTopMovies a
-        where a.genre=#{genre} and
-        10 > (select count(*) from genresTopMovies where  genre = #{genre} and score > a.score )
-        order by a.score desc;
+        select A.mid,A.genre,ROUND(A.score,2)as score, movie.name from
+        (select * from genrestopmovies where genre=#{genre} order by score desc limit 5) A
+        join movie on A.mid = movie.mid
     </select>
 
     <select id="userRecommend" resultType="map">
         select * from UserRecs where uid=#{uid}
     </select>
+
+    <select id="top10_history_count" parameterType="map" resultType="map">
+        SELECT A.mid, A.count, movie.name from
+        (SELECT * FROM ratemoremovies order by count desc limit 10)A
+        join movie where A.mid = movie.mid
+        limit #{start},#{length};;
+    </select>
+
+    <select id="top10_current_count" parameterType="map" resultType="map">
+        SELECT A.mid, A.count, movie.name from
+        (select * from rateMoreRecentlyMovies
+                 where yearmonth=(select max(yearmonth) from rateMoreRecentlyMovies)
+                 order by count desc limit 10)A
+        join movie where A.mid = movie.mid
+        limit #{start},#{length};
+    </select>
+
+    <select id="top10_rate" parameterType="map" resultType = "map">
+        SELECT A.mid, A.avg as rate, movie.name from
+        (SELECT * FROM `averagemovies` ORDER BY avg DESC limit 10)A
+        join movie on A.mid = movie.mid
+        limit #{start},#{length};
+    </select>
+
 
 </mapper>

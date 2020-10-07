@@ -64,6 +64,24 @@ public class MovieService {
         System.out.println(genre);
         return movieMapper.top10(genre);
     }
+    public List<Map<String,Object>> top10_history_count(PageDto pageDto){
+        Map<String,Integer> mp=new HashMap<>();
+        mp.put("start", pageDto.getPage()*pageDto.getSize());
+        mp.put("length",pageDto.getSize());
+        return movieMapper.top10_history_count(mp);
+    }
+    public List<Map<String,Object>> top10_current_count(PageDto pageDto){
+        Map<String,Integer> mp=new HashMap<>();
+        mp.put("start", pageDto.getPage()*pageDto.getSize());
+        mp.put("length",pageDto.getSize());
+        return movieMapper.top10_current_count(mp);
+    }
+    public List<Map<String,Object>> top10_rate(PageDto pageDto){
+        Map<String,Integer> mp=new HashMap<>();
+        mp.put("start", pageDto.getPage()*pageDto.getSize());
+        mp.put("length",pageDto.getSize());
+        return movieMapper.top10_rate(mp);
+    }
     public List<Map<String,Object>> userRecommend(User user){
         return movieMapper.userRecommend(user);
     }

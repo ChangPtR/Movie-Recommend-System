@@ -109,6 +109,36 @@ public class MovieController {
         responseDto.setContent(mvList);
         return responseDto;
     }
+    @PostMapping("/top10_hc")
+    public ResponseDto top10_history_count(@RequestBody PageDto pageDto){
+        ResponseDto responseDto=new ResponseDto();
+        List<Map<String,Object>> mvList=movieService.top10_history_count(pageDto);
+        if(mvList.size()==0){
+            responseDto.setSuccess(false);
+        }
+        responseDto.setContent(mvList);
+        return responseDto;
+    }
+    @PostMapping("/top10_cc")
+    public ResponseDto top10_current_count(@RequestBody PageDto pageDto){
+        ResponseDto responseDto = new ResponseDto();
+        List<Map<String,Object>> mvList=movieService.top10_current_count(pageDto);
+        if(mvList.size()==0){
+            responseDto.setSuccess(false);
+        }
+        responseDto.setContent(mvList);
+        return responseDto;
+    }
+    @PostMapping("/top10_r")
+    public ResponseDto top10_rate(@RequestBody PageDto pageDto){
+        ResponseDto responseDto=new ResponseDto();
+        List<Map<String,Object>> mvList=movieService.top10_rate(pageDto);
+        if(mvList.size()==0){
+            responseDto.setSuccess(false);
+        }
+        responseDto.setContent(mvList);
+        return responseDto;
+    }
     @PostMapping("/userRecommend")
     public ResponseDto userRecommend(@RequestBody User user){
         ResponseDto responseDto=new ResponseDto();
