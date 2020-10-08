@@ -1,0 +1,7 @@
+POST http://localhost:8088/rs/MovieController/top10_hc
+Content-Type: application/json
+
+{
+  "page": 0,
+  "size": 5
+}
