@@ -21,4 +21,5 @@ public interface MovieMapper {
     public List<Map<String,Object>> top10_current_count(Map<String, Integer> mp);
     public List<Map<String,Object>> top10_rate(Map<String,Integer> mp);
     public List<Map<String,Object>> userRecommend(User user);
+    public List<Map<String,Object>> contRecommend(User user);
 }

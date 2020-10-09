@@ -149,4 +149,14 @@ public class MovieController {
         responseDto.setContent(mvList);
         return responseDto;
     }
+    @PostMapping("/contRecommend")
+    public ResponseDto contRecommend(@RequestBody User user){
+        ResponseDto responseDto=new ResponseDto();
+        List<Map<String,Object>> mvList=movieService.contRecommend(user);
+        if(mvList.size()==0){
+            responseDto.setSuccess(false);
+        }
+        responseDto.setContent(mvList);
+        return responseDto;
+    }
 }

@@ -35,7 +35,11 @@
     </select>
 
     <select id="userRecommend" resultType="map">
-        select * from UserRecs where uid=#{uid}
+        select * from UserRecs where uid=#{uid} limit 5
+    </select>
+
+    <select id="contRecommend" resultType="map">
+        SELECT smid FROM `contentuserrecs` where uid=#{uid} limit 5
     </select>
 
     <select id="top10_history_count" parameterType="map" resultType="map">

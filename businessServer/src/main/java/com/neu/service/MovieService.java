@@ -85,4 +85,8 @@ public class MovieService {
     public List<Map<String,Object>> userRecommend(User user){
         return movieMapper.userRecommend(user);
     }
+    public List<Map<String,Object>> contRecommend(User user){
+        return movieMapper.contRecommend(user);
+    }
+
 }
